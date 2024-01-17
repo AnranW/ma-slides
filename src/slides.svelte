@@ -58,7 +58,7 @@
 			</div>
 			<br>
 			<div class="flex items-center justify-center">
-				<img class="h-[10vh] align-middle" src="/AwesomeAnranSlides/tum-logo.svg" alt="tum logo">
+				<img class="h-[10vh] align-middle" src="/ma-slides/tum-logo.svg" alt="tum logo">
 			</div>
 			<!-- fill in the data for this presentation  -->
 			<script> 
@@ -135,12 +135,12 @@
 		const totalChapters = chapterNames.length;
 		var temp; 
 		for (let i = 0; i < totalSlides; i++) {
-			// one section, one slide
+			// one section equals one slide, so just use section to locate slides
 			document.getElementsByTagName('section')[i].setAttribute("id", "slide-"+(i+1));
 			// add author name 
-			document.getElementsByTagName('author')[i].innerText=author;
+			document.getElementsByTagName('author')[i].innerHTML=author;
 			// add title 
-			document.getElementsByTagName('title')[i+1].innerText=title;
+			document.getElementsByTagName('mytitle')[i].innerHTML="<a href=\"#slide-1\">"+title+"</a>";
 			// show slide number with total slide number
 			document.getElementsByTagName("pagenumber")[i].innerHTML = (i+1)+"/"+totalSlides;
 		}
@@ -172,7 +172,6 @@
 				if (temp.hasAttribute("data-chpcol")){ 
 					temp.style.color="white";
 				}
-				// document.querySelectorAll("data-chpcol")[(i)*(totalChapters)+chapterNr-1].style.color="white";
 			}
 		}
 		// circles: start, start+1, . . . , end are created

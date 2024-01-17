@@ -8,7 +8,7 @@
 
 # Intro
 This is **AwesomeAnranSlides**, built upon [Animotion](https://animotion.pages.dev). 
-A preview can be found [here](https://AnranW.github.io/AwesomeAnranSlides). 
+A preview can be found [here](https://AnranW.github.io/ma-slides). 
 
 # Features
 - Automatically calculated total slide number.

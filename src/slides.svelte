@@ -7,8 +7,8 @@
 	<script>
 		// information about this presentation 
 		const author = "Anran Wang"; 
-		const title = "This Is My Own Title";
-		const subtitle = "And here is my subtitle";
+		const title = "Necessary Liberal Preconditions";
+		const subtitle = "A Proof System";
 		const department = "Department of Informatics"; 
 		const university = "Technical University of Munich"; 
 		var currentChapterName="";
@@ -102,7 +102,7 @@
 		</Layout>
 	</Slide>
 
-	<script>newChapter("The actual body of this presentation");</script>
+	<script>newChapter("Example");</script>
 	<Slide>
 		<Layout>
 			<div class="flex h-full items-center justify-center gap-[100px]">

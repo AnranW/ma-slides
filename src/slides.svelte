@@ -1,6 +1,8 @@
 <script lang="ts">
-	import { Presentation, Slide } from '@components'
+	import { Presentation, Slide, Code } from '@components'
 	import Layout from './layout.svelte'
+	import Stack from '@lib/components/stack.svelte'
+	import Step from '@lib/components/step.svelte'
 </script>
 
 <Presentation>	
@@ -85,49 +87,237 @@
 	</Slide>
 	
 	<!-- intro -->
-	<script>newChapter("Introduction")</script>
-	<Slide>
+	
+	<!-- Body -->
+	<script>newChapter("Necessarily Liberal Preconditions");</script>
+	<Slide >
 		<Layout>
-			<div class="flex h-full items-center justify-center gap-[100px]">
-				chapter 1 page 1
+			<div>
+				Remember: {`\$ wlp \$`} transformer with demonic non-determinism 
+			</div> <br>
+			<div class="flex justify-center items-center">
+				<img src="wlpd.svg" alt="wlp_d" class="h-[50vh] flex items-center justify-center">
 			</div>
 		</Layout>
 	</Slide>
 
-	<Slide>
-		<Layout>
-			<div class="flex h-full items-center justify-center gap-[100px]">
-				chapter 1 page 2
-			</div>
-		</Layout>
-	</Slide>
+	<Slide ><Layout>
+		<div>
+			Investigating {`\$ G \$`} that is weaker than {`\$ wlp \$`}: {`\$ wlp.C.F\\implies G \$`}
+		</div> <br>
+		<div class="flex justify-center items-center">
+		<Stack> 
+			<Step> 
+				<img src="question.svg" alt="?" class="h-[50vh] flex items-center justify-center">
+			</Step>
+			<Step fadeInThenOut> 
+				<img src="q.svg" alt="?" class="h-[50vh] flex items-center justify-center">
+			</Step>
+		</Stack>
+		</div>
+	</Layout></Slide>
+	<Slide ><Layout>
+		<div>
+			Investigating {`\$ G \$`} that is weaker than {`\$ wlp \$`}: {`\$ wlp.C.F\\implies G \$`}
+		</div> <br>
+		<div class="flex justify-center items-center">
+			<Stack>
+				<Step fadeInThenOut> 
+					<img data-id="wlp-g" src="wlp-g.svg" alt="wlp-g" class="h-[50vh] flex items-center justify-center">
+				</Step>
+				<Step fadeInThenOut> 
+				<img data-id="wlp-g" src="wlp-g-g.svg" alt="wlp-g" class="h-[50vh] flex items-center justify-center">
+				</Step>
+				<Step fadeInThenOut> 
+					<img data-id="wlp-g" src="wlp-g-gg.svg" alt="wlp-g" class="h-[50vh] flex items-center justify-center">
+				</Step>
+				<Step fadeInThenOut> 
+					<img data-id="wlp-g" src="wlp-g-ggr.svg" alt="wlp-g" class="h-[50vh] flex items-center justify-center">
+				</Step>
+				<Step fadeInThenOut> 
+					<img data-id="wlp-g" src="wlp-g-ggrr.svg" alt="wlp-g" class="h-[50vh] flex items-center justify-center">
+				</Step>
+				<Step fadeInThenOut> 
+					<img data-id="wlp-g" src="wlp-g-r.svg" alt="wlp-g" class="h-[50vh] flex items-center justify-center">
+				</Step>
+				<Step fadeInThenOut> 
+					<img data-id="wlp-g" src="wlp-g-rr.svg" alt="wlp-g" class="h-[50vh] flex items-center justify-center">
+				</Step>
+				<Step fadeInThenOut> 
+					<img data-id="wlp-g" src="wlp-g-gr.svg" alt="wlp-g" class="h-[50vh] flex items-center justify-center">
+				</Step>
+				<Step fadeInThenOut> 
+					<img data-id="wlp-g" src="wlp-g-grr.svg" alt="wlp-g" class="h-[50vh] flex items-center justify-center">
+				</Step>
+				<Step fadeInThenOut> 
+					<img data-id="wlp-g" src="wlp-g-ggrr.svg" alt="wlp-g" class="h-[50vh] flex items-center justify-center">
+				</Step>
+			</Stack>
+		</div>
+	</Layout></Slide>
+	
+	<Slide ><Layout>
+		<Step fadeIn>
+			Conclusion: without further restrictions, the necessary liberal prcondition {`\$ G \$`} can contain all possible initial states. 
+		</Step>
+		<br>
+		<Step fadeIn>
+			<div class="text-[10vh]"> However: </div> 
+		</Step>
+	</Layout></Slide>
 
-	<script>newChapter("Example");</script>
-	<Slide>
-		<Layout>
-			<div class="flex h-full items-center justify-center gap-[100px]">
-				chapter 2 page 1 
-			</div>
-		</Layout>
-	</Slide>
+	<Slide ><Layout>
+		<div>
+			<Step fadeIn>
+				Lemma: {`\$ wlp.C.F = \\neg wp.C.\\neg F \$`} 
+			</Step>
+			<Step fadeIn>
+				({`\$ wlp \$`} and {`\$ wp \$`} are each other's conjugate. )
+			</Step>
+		</div> <br>
+		<div class="flex justify-center items-center">
+			<Stack> 
+				<Step> 
+					<img src="wlp-nwp.svg" alt="wlp-nwp" class="h-[50vh] flex items-center justify-center">
+				</Step>
+				<Step fadeIn> 
+					<img src="wlp-nwp-fill.svg" alt="wlp-nwp" class="h-[50vh] flex items-center justify-center">
+				</Step>
+				<Step fadeIn> 
+					<img src="g-fill.svg" alt="wlp-nwp" class="h-[50vh] flex items-center justify-center">
+				</Step>
+				<Step fadeIn> 
+					<img src="ng-bracket.svg" alt="wlp-nwp" class="h-[50vh] flex items-center justify-center">
+				</Step>
+			</Stack>
+		</div>
+		<div>
+			<Step>
+				Conclusion: {`\$ \\neg G \\implies wp.C.\\neg F \$`}. 
+			</Step>
+		</div>
+	</Layout></Slide>
+	<Slide ><Layout>
+		<div>
+			Conclusion: {`\$ \\neg G \\implies wp.C.\\neg F \$`}. 
+		</div>
+		<br>
+		<Step fadeIn>
+			"Negated total correctness"?
+		</Step>
+		<br>
+		<Step fadeIn>
+			{`\$ F \$`} can be used to express some unwanted behavior, with insufficient knowledge of more unwanted behavior: 
+		</Step>
+	</Layout></Slide>
 
+	<script>newChapter("Example: Mutual Exclusion")</script>
+	<Slide ><Layout>
+		<div>
+			Modifying Mutual Exclusion Protocol of Peterson: 
+		</div>
+		<div class="mx-auto flex justify-center rounded items-center text-[7vh] bg-[#163468] w-[70vw]">
+			<Code lang="java" > 
+				{`
+					...
+					// leave non-critical section
+					turn := B;
+					while (turn != A) do 
+					    turn := A [] turn := B // modeling the behavior of other threads
+					critA := true;
+					// enter critical section
+					... 
+				`}
+			</Code>	
+		</div>
+		<br>
+		<div>
+			Unwanted behavior: both A and B are in critical section. 
+		</div>
+		<div>
+			{`\$ F = critA \\wedge critB \$`} 
+		</div>
+	</Layout></Slide>
+
+	<Slide ><Layout>
+		<div>
+			Finding wlp: 
+		</div>
+		<br>
+		<div class="mx-auto flex justify-center rounded items-center text-[7vh] bg-[#163468] w-[40vw]">
+			<Code lang="java"  lines= "8|6-8|3-6|1-3"> 
+				{`
+						{ critB } 
+					turn := B;
+						{ critB }
+					while (turn != A) do 
+						turn := A [] turn := B 
+						{ critB }
+					critA := true;
+						{ critA and critB }
+				`}
+			</Code>	
+		</div>
+	</Layout></Slide>
+
+	<Slide ><Layout>
+		<div>
+			Thus by avoiding the satisfaction of critB before leaving non-critical section, thread A can be happy not to be deadlocked with thread B. 
+		</div>
+		<br>
+		<Step fadeIn>
+			<div>
+				However, there might be multiple processes and threads that A does not know of. 
+			</div>
+		</Step>
+		<br>
+		<Step fadeIn>
+			<div>
+				The programmer might be aware of processes like kernel_task, systemstats, ... that might enter the same critical section: 
+			</div>
+		</Step>
+		<br>
+		<Step fadeIn>
+			<div>
+				{`\$ wlp.C.(critA \\wedge critB) = critB \$`} 
+			</div>
+			<div>
+				{`\$ \\implies critB \\vee critKerneltask \\vee critSystemstats \$`}
+			</div>
+		</Step>
+		<!-- <Step fadeIn>
+			But we have insufficient knowledge of more potentially conflicting threads/processes, and can not formulate the condition "there is no deadlock" to use {`\$wp\$`}. 
+		</Step>
+	 -->
+	</Layout></Slide>
+
+	<!-- Conclusion -->
 	<script> newChapter("To wrap it up"); </script>
 	<Slide>
 		<Layout>
-			<div class="flex h-full items-center justify-center gap-[100px]">
-				chapter 3 page 1
-			</div>
+			<Step fadeIn>
+				<div>
+					With the help of {`\$sp,\\  wlp.C.F\\implies G \$`} can be used to identify {`\$ wlp\$`} with angelic non-determinism. 
+				</div>
+			</Step>
+			<br>
+			<Step fadeIn>
+				Without extra specification, {`\$ G \$`} can contain anything. 
+			</Step>
+			<br>
+			<Step fadeIn>
+				It is however useful to avoid unwanted final states, when there is insufficient information about all unwanted behavior, but experienced programmer can overapproximate, or guess what final states are problematic. 
+			</Step>
+			<br>
+			<Step fadeIn>
+				In essence, it is useful instead of {`\$ wp \$`} when the postcondition is hard to express, but its negation is not. 
+			</Step>
 		</Layout>
 	</Slide>
-	<Slide>
-		<Layout>
-			<div class="flex h-full items-center justify-center gap-[100px]">
-				chapter 3 page 1
-				<test> hi</test>
-			</div>
-		</Layout>
-	</Slide>
-
+	<Slide><Layout>
+		<img class="h-[60vh] mx-auto " src="https://media1.tenor.com/m/ktsa9WrPiKgAAAAC/friends-chandler-funny.gif" alt="dance">
+		<br><div> Thank you! </div>
+	</Layout></Slide>
 
 	<!-- to mimic the latex template  -->
 	<script>
@@ -149,7 +339,7 @@
 				// fill in chapter names
 				temp = document.querySelectorAll("table.topbar")[i]; 
 				temp.getElementsByTagName("tr")[0].innerHTML += "<th data-chpcol=\"chpcol\" style=\"font-weight:normal\">"+chapterNames[j]+"</th>";
-				document.getElementsByTagName("test")[0].innerHTML="here!"; 
+				// document.getElementsByTagName("test")[0].innerHTML="here!"; 
 				// fill in dots
 				let slidesInChapter = presentationData.filter(item => item.chapter == chapterNames[j]);
 				let begin = slidesInChapter[0].pagenr;

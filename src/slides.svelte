@@ -33,46 +33,44 @@
 	</script>
 
 	<!-- title page -->
-	<Slide>
-		<Layout>
-			<div class="flex h-[25vh] w-[90vw] bg-[var(--themecolor)] text-white items-center justify-center gap-[100px]">
-				<div>
-					<div class="text-[6vh]">
-						<span id="mytitle"> </span>
-					</div>
-					<br>
-					<div class="text-[4vh]">
-						<span id="mysubtitle"> </span>
-					</div>
+	<Slide><Layout>
+		<div class="m-16 flex h-[25vh] w-[90vw] bg-[var(--themecolor)] text-white items-center justify-center gap-[100px]">
+			<div>
+				<div class="text-[6vh]">
+					<span id="mytitle"> </span>
+				</div>
+				<br>
+				<div class="text-[4vh]">
+					<span id="mysubtitle"> </span>
 				</div>
 			</div>
+		</div>
+		<br>
+		<div> 
+			<span id="myname"></span>
+		</div>
+		<br>
+		<div class="text-[3vh]"> 
+			<span id="myuni"></span>
+		</div>
+		<div class="text-[3.5vh]"> 
 			<br>
-			<div> 
-				<span id="myname"></span>
-			</div>
-			<br>
-			<div class="text-[3vh]"> 
-				<span id="myuni"></span>
-			</div>
-			<div class="text-[3.5vh]"> 
-				<br>
-				<span id="mydate"></span>
-			</div>
-			<br>
-			<div class="flex items-center justify-center">
-				<img class="h-[10vh] align-middle" src="/ma-slides/tum-logo.svg" alt="tum logo">
-			</div>
-			<!-- fill in the data for this presentation  -->
-			<script> 
-				document.getElementById("mytitle").innerHTML=title;
-				document.getElementById("mysubtitle").innerHTML=subtitle;
-				document.getElementById("myname").innerHTML=author;
-				document.getElementById("myuni").innerHTML=department+"<br>"+university;
-				let today = new Date(); 
-				document.getElementById("mydate").innerHTML=today.toISOString().split('T')[0]; 
-			</script>
-		</Layout>
-	</Slide>
+			<span id="mydate"></span>
+		</div>
+		<br>
+		<div class="flex items-center justify-center">
+			<img class="h-[10vh] align-middle" src="/ma-slides/tum-logo.svg" alt="tum logo">
+		</div>
+		<!-- fill in the data for this presentation  -->
+		<script> 
+			document.getElementById("mytitle").innerHTML=title;
+			document.getElementById("mysubtitle").innerHTML=subtitle;
+			document.getElementById("myname").innerHTML=author;
+			document.getElementById("myuni").innerHTML=department+"<br>"+university;
+			let today = new Date(); 
+			document.getElementById("mydate").innerHTML=today.toISOString().split('T')[0]; 
+		</script>
+	</Layout></Slide>
 	<!-- TOC -->
 	<Slide>
 		<script>
@@ -90,37 +88,64 @@
 	
 	<!-- Body -->
 	<script>newChapter("Necessarily Liberal Preconditions");</script>
-	<Slide >
-		<Layout>
-			<div>
-				Remember: {`\$ wlp \$`} transformer with demonic non-determinism 
-			</div> <br>
-			<div class="flex justify-center items-center">
-				<img src="wlpd.svg" alt="wlp_d" class="h-[50vh] flex items-center justify-center">
-			</div>
-		</Layout>
-	</Slide>
+	<Slide animate><Layout>
+		<titlebar style="display:block; padding-top:0.7vh;">
+			Remember: {`\$ wlp \$`}  transformer with demonic non-determinism 
+		</titlebar>
+		<mybody>
+			<img src="wlpd.svg" alt="wlp_d" class="h-[50vh] ">
+		</mybody>
+	</Layout></Slide>
+
+	<Slide animate><Layout>
+		<titlebar style="display:block; padding-top:0.7vh;">
+			Investigating {`\$ G \$`} where {`\$ wlp.C.F\\implies G \$`}
+		</titlebar>
+		<mybody>
+			<img src="wlpd.svg" alt="wlp_d" class="w-[40vw]">
+			<Stack> 
+				<Step> <img data-id="img:q" src="question.svg" alt="?" class="w-[40vw]"></Step>
+				<Step fadeInThenOut> <img src="q.svg" alt="?" class="w-[50vw] flex items-center justify-center"></Step>
+			</Stack>
+		</mybody>
+	</Layout></Slide>
+	
+	<Slide animate><Layout>
+		<titlebar style="display:block; padding-top:0.7vh;">
+			Investigating {`\$ G \$`} where {`\$ wlp.C.F\\implies G \$`}
+		</titlebar>
+		<mybody>
+			<Step class="custom blur"><img data-id="img:q" src="question-q.svg" alt="?" style="height:50vh;"></Step>
+			<Step class="custom blur"><img data-id="wlp-g" src="wlp-g.svg" alt="wlp-g" style="height:50vh"> </Step>
+
+			<!-- <script>
+				let pic = document.querySelectorAll('[data-id="wlp-g"]');
+				pic.style.height = "70vh";
+			</script> -->
+
+
+		</mybody>
+	</Layout></Slide>
 
 	<Slide ><Layout>
-		<div>
-			Investigating {`\$ G \$`} that is weaker than {`\$ wlp \$`}: {`\$ wlp.C.F\\implies G \$`}
-		</div> <br>
-		<div class="flex justify-center items-center">
-		<Stack> 
-			<Step> 
-				<img src="question.svg" alt="?" class="h-[50vh] flex items-center justify-center">
-			</Step>
-			<Step fadeInThenOut> 
-				<img src="q.svg" alt="?" class="h-[50vh] flex items-center justify-center">
-			</Step>
-		</Stack>
+		<mybody>
+			<div class="grid" style="grid-template-columns: auto auto auto auto;">
+				<img data-id="wlp-g" src="wlp-g.svg" alt="wlp-g">
+				<img data-id="wlp-g" src="wlp-g-g.svg" alt="wlp-g">
+				<img data-id="wlp-g" src="wlp-g-gg.svg" alt="wlp-g">
+				<img data-id="wlp-g" src="wlp-g-ggr.svg" alt="wlp-g">
+				<img data-id="wlp-g" src="wlp-g-ggrr.svg" alt="wlp-g">
+				<img data-id="wlp-g" src="wlp-g-r.svg" alt="wlp-g">
+				<img data-id="wlp-g" src="wlp-g-rr.svg" alt="wlp-g">
+				<img data-id="wlp-g" src="wlp-g-gr.svg" alt="wlp-g">
+				<img data-id="wlp-g" src="wlp-g-grr.svg" alt="wlp-g">
+				<img data-id="wlp-g" src="wlp-g-ggrr.svg" alt="wlp-g">
 		</div>
+		</mybody>
 	</Layout></Slide>
+
 	<Slide ><Layout>
-		<div>
-			Investigating {`\$ G \$`} that is weaker than {`\$ wlp \$`}: {`\$ wlp.C.F\\implies G \$`}
-		</div> <br>
-		<div class="flex justify-center items-center">
+		<mybody>
 			<Stack>
 				<Step fadeInThenOut> 
 					<img data-id="wlp-g" src="wlp-g.svg" alt="wlp-g" class="h-[50vh] flex items-center justify-center">
@@ -153,7 +178,7 @@
 					<img data-id="wlp-g" src="wlp-g-ggrr.svg" alt="wlp-g" class="h-[50vh] flex items-center justify-center">
 				</Step>
 			</Stack>
-		</div>
+		</mybody>
 	</Layout></Slide>
 	
 	<Slide ><Layout>
@@ -209,6 +234,13 @@
 		<Step fadeIn>
 			{`\$ F \$`} can be used to express some unwanted behavior, with insufficient knowledge of more unwanted behavior: 
 		</Step>
+	</Layout></Slide>
+
+	<Slide animate><Layout>
+		<img src="wlp-nwp.svg" alt="wlp-nwp" class="h-[50vh] flex items-center justify-center">
+	</Layout></Slide>
+	<Slide animate ><Layout>
+		<img src="wlp-nwp.svg" alt="wlp-nwp" class="h-[20vh] flex items-center justify-center">
 	</Layout></Slide>
 
 	<script>newChapter("Example: Mutual Exclusion")</script>
@@ -382,6 +414,22 @@
 	</script>
 	
 	<style>
+		:root{
+			--g-size:30vh;
+		}
+		:global(.fragment.move) {
+			height:70vh;
+		}
+		:global(.fragment.move.visible) {
+			height:20vh;
+		}
+		:global(.fragment.blur) {
+			filter: blur(5px);
+		}
+
+		:global(.fragment.blur.visible) {
+			filter: none;
+		}
 		.chpicon{
 			color: white;
 			width:180%;
@@ -394,6 +442,37 @@
 			border-radius: 50%;
 			border: 1.5px solid var(--themecolorlight);
 			display: inline-block;
+		}
+		ul.a {
+			list-style-type: square;
+			padding-top:4vh;
+		}
+		ul.b {
+			list-style-type: circle;
+			margin-left:5vh;
+			margin-right:5vh;
+			padding-top:2vh;
+		}
+		ul{
+			text-align: left;
+			margin-left:20vh;
+			margin-right:5vh;
+		}
+		titlebar{
+			display:flex;
+			background: rgb(242,242,242); 
+			width: 100vw; 
+			height: 9vh; 
+			text-align: left;
+			padding-left: 5vh; 
+			padding-top: 2vh;
+			font-size: 5vh;
+		}
+		mybody{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height:79vh;
 		}
 	</style>
 </Presentation>

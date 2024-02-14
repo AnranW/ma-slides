@@ -115,8 +115,8 @@
 			Investigating {`\$ G \$`} where {`\$ wlp.C.F\\implies G \$`}
 		</titlebar>
 		<mybody>
-			<Step class="custom blur"><img data-id="img:q" src="question-q.svg" alt="?" style="height:50vh;"></Step>
-			<Step class="custom blur"><img data-id="wlp-g" src="wlp-g.svg" alt="wlp-g" style="height:50vh"> </Step>
+			<Step fadeIn><img data-id="img:q" src="question-q.svg" alt="?" style="height:50vh;"></Step>
+			<Step fadeIn><img data-id="wlp-g" src="wlp-g.svg" alt="wlp-g" style="height:50vh"> </Step>
 
 			<!-- <script>
 				let pic = document.querySelectorAll('[data-id="wlp-g"]');

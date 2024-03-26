@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Presentation, Slide, Code } from '@components'
+	import { Presentation, Slide, Code} from '@components'
 	import Layout from './layout.svelte'
 	import Stack from '@lib/components/stack.svelte'
 	import Step from '@lib/components/step.svelte'
@@ -85,9 +85,214 @@
 	</Slide>
 	
 	<!-- intro -->
+	<script>newChapter("Motivation");</script>
+	<Slide animate><Layout>
+		<titlebar>Why proof?</titlebar>
+		<mybody>
+			<Step fadeIn>
+				<div>
+					<img src="https://facereader.witbacon.com/assets/img/sunzi.jpg" alt="wlp_d" class="w-[50vw] ">
+					<div>Awesome! </div>
+				</div>
+			</Step>
+			<Step fadeIn>
+				<div>
+					<ul class="a">
+						<li> Provided....</li>
+						<li> and.... </li>
+						<li> then.... </li>
+					</ul>
+				</div>
+			</Step>
+		</mybody>
+	</Layout></Slide>
+
+	<Slide animate><Layout>
+		<titlebar>Hoare Triple</titlebar>
+		<mybody>
+			<div class="mx-auto flex justify-center rounded items-center text-[7vh] bg-[#163468] w-[40vw]">
+				<Code lang="java" lines= "1-2" class="bg-[#163468]"> 
+					{`
+						action := writeThesis;
+						thesis := written; 
+					`}
+				</Code>	
+			</div>
+		</mybody>
+	</Layout></Slide>
+	<Slide animate><Layout>
+		<titlebar>Hoare Triple</titlebar>
+		<mybody>
+			<div class="mx-auto flex justify-center rounded items-center text-[7vh] bg-[#163468] w-[60vw]">
+				<Code lang="java" lines= "2,4|1,2,4|1-4|1-5"> 
+					{`
+					 {action == playGame, thesis == unwritten}
+					 action := writeThesis;
+					 {action == writeThesis, thesis == unwritten}
+					 thesis := written; 
+					 {action == writeThesis, thesis == written}
+					 `}
+			</Code>	
+			</div>
+		</mybody>
+	</Layout></Slide>
+	<Slide animate><Layout>
+		<titlebar>Weakest Precondition</titlebar>
+		<mybody>
+			<div>
+				<Step fadeIn>
+					{`{action == doDishes}`}
+				</Step>
+				<Step fadeIn>
+					{`{action == takeHike}`}
+				</Step>
+				<Step fadeIn>
+					{`{action == sleepIn}`}
+				</Step>
+				<Step fadeIn>
+					{`{thesis == written}`}
+				</Step>
+				<br>
+				<div class="mx-auto flex justify-center rounded items-center text-[7vh] bg-[#163468] w-[60vw]">
+					<Code lang="java" lines= "1-5" > 
+						{`
+						{action == ?, thesis == ?}
+						action := writeThesis;
+						{action == writeThesis, thesis == ?}
+						thesis := written; 
+						{action == writeThesis, thesis == written}
+						`}
+				</Code>	
+				</div>
+			</div>
+		</mybody>
+	</Layout></Slide>
+
+	<Slide animate><Layout>
+		<titlebar>Weakest Precondition</titlebar>
+		<mybody>
+			<div>
+
+				<div class="mx-auto flex justify-center rounded items-center text-[7vh] bg-[#163468] w-[60vw]">
+					<Code lang="java" lines= "1-5"> 
+						{`
+					 {true}
+					 action := writeThesis;
+					 {action == writeThesis}
+					 thesis := written; 
+					 {action == writeThesis, thesis == written}
+					 `}
+				</Code>	
+			</div>
+			<br>
+			<div>"true" is the most general (weakest) precondition.</div>
+		</div>
+		</mybody>
+	</Layout></Slide>
+	
+	<script>newChapter("Weakest (Liberal) Precondition");</script>
+	<Slide animate><Layout>
+		<titlebar>
+			Hoare Triple vs Weakest Precondition (Deterministic)
+		</titlebar>
+		<mybody>
+			<Step fadeIn>
+				<img src="hoare.svg" alt="wlp_d" class="w-[40vw] ">
+			</Step>
+			<Step fadeIn>
+				<img src="wp-det.svg" alt="wlp_d" class="w-[40vw] ml-[5vw]">
+			</Step>
+		</mybody>
+	</Layout></Slide>
+	<Slide animate><Layout>
+		<titlebar>
+			Weakest Precondition (Nondeterministic, Angelic)
+		</titlebar>
+		<mybody>
+			<img src="wp-nondet.svg" alt="wlp_d" class="w-[50vw]">
+		</mybody>
+	</Layout></Slide>
+	<Slide animate><Layout>
+		<titlebar>
+			Weakest Liberal Precondition (Nondeterministic, Demonic)
+		</titlebar>
+		<mybody>
+			<img src="wlp-nondet.svg" alt="wlp_d" class="w-[50vw]">
+		</mybody>
+	</Layout></Slide>
+	<Slide animate><Layout>
+		<titlebar>
+			wp, wlp, sp, slp
+		</titlebar>
+		<mybody>
+			<Step fadeIn>
+				<img src="wp-family.svg" alt="wlp_d" class="w-[48vw]">
+			</Step>
+			<Step fadeIn>
+				<img src="sp-family.svg" alt="wlp_d" class="w-[47vw] ml-[2vw]">
+			</Step>
+		</mybody>
+	</Layout></Slide>
+	<Slide animate><Layout>
+		<titlebar>
+			Proving Program Correct or Bugs Reachable
+		</titlebar>
+		<mybody>
+			<div style="text-align: left;">
+				<div data-id="total-correct">{`\$G\\implies wp.C.F\$`}.  Termination and correctness. (Manna and Pnueli, 1974)</div>
+				<div data-id="partial-correct">{`\$G\\implies wlp.C.F\$`}. Correctness upon termination. (Hoare, 1969) </div>
+				<!-- <br>Equivalent: {`\$sp.C.G\\implies F\$`} <br> -->
+				<div data-id="total-incorrect">{`\$F\\implies sp.C.G\$`}. Bugs definitely reachable. (O'Hearn, 2020) </div>
+				<div data-id="partial-incorrect">{`\$F\\implies slp.C.G\$`}. Bugs can be reachable. </div>
+				<!-- <br>Equivalent: {`\$wp.C.F\\implies G\$`} -->
+			</div>
+		</mybody>
+	</Layout></Slide>
+	<Slide animate><Layout>
+		<titlebar>
+			Proving Program Correct or Bugs Reachable
+		</titlebar>
+		<mybody>
+			<div style="text-align: left;">
+				<div data-id="total-correct">{`\$G\\implies wp.C.F\$`}.  Termination and correctness. (Manna and Pnueli, 1974)</div>
+				<br>
+				<div data-id="partial-correct">{`\$G\\implies wlp.C.F\$`}. Correctness upon termination. (Hoare, 1969) </div>
+				<div class="ml-[5vw]">Equivalent: {`\$sp.C.G\\implies F\$`} </div>
+				<br>
+				<div data-id="total-incorrect">{`\$F\\implies sp.C.G\$`}. Bugs definitely reachable. (O'Hearn, 2020) </div>
+				<br>
+				<div data-id="partial-incorrect">{`\$F\\implies slp.C.G\$`}. Bugs can be reachable. </div>
+				<div class="ml-[5vw]">Equivalent: {`\$wp.C.F\\implies G\$`}</div>
+			</div>
+		</mybody>
+	</Layout></Slide>
+	<Slide animate><Layout>
+		<titlebar>
+			How about the others?
+		</titlebar>
+		<mybody>
+			<div style="text-align: left;" data-id="wlpg">
+				<Step fadeOut> 
+					{`\$slp.C.G\\implies F\$`}
+				</Step>
+				{`\$wlp.C.F\\implies G\$`}
+			</div>
+		</mybody>
+	</Layout></Slide>
 	
 	<!-- Body -->
-	<script>newChapter("Necessarily Liberal Preconditions");</script>
+	<script>newChapter("Necessarily Liberal Precondition");</script>
+	<Slide animate><Layout>
+		<titlebar>
+			Necessarily Liberal Precondition
+		</titlebar>
+		<mybody>
+			<div style="text-align: left;" class="text-[10vh]" data-id="wlpg">
+				{`\$wlp.C.F\\implies G\$`}
+			</div>
+		</mybody>
+	</Layout></Slide>
+	
 	<Slide animate><Layout>
 		<titlebar style="display:block; padding-top:0.7vh;">
 			Remember: {`\$ wlp \$`}  transformer with demonic non-determinism 
@@ -102,47 +307,14 @@
 			Investigating {`\$ G \$`} where {`\$ wlp.C.F\\implies G \$`}
 		</titlebar>
 		<mybody>
-			<img src="wlpd.svg" alt="wlp_d" class="w-[40vw]">
 			<Stack> 
-				<Step> <img data-id="img:q" src="question.svg" alt="?" class="w-[40vw]"></Step>
-				<Step fadeInThenOut> <img src="q.svg" alt="?" class="w-[50vw] flex items-center justify-center"></Step>
+				<img src="wlpd.svg" alt="wlp_d" class="w-[40vw]"> 
+				<Step><img src="g color.svg" alt="wlp_d" class="w-[40vw]"> </Step>
 			</Stack>
-		</mybody>
-	</Layout></Slide>
-	
-	<Slide animate><Layout>
-		<titlebar style="display:block; padding-top:0.7vh;">
-			Investigating {`\$ G \$`} where {`\$ wlp.C.F\\implies G \$`}
-		</titlebar>
-		<mybody>
-			<Step fadeIn><img data-id="img:q" src="question-q.svg" alt="?" style="height:50vh;"></Step>
-			<Step fadeIn><img data-id="wlp-g" src="wlp-g.svg" alt="wlp-g" style="height:50vh"> </Step>
-
-			<!-- <script>
-				let pic = document.querySelectorAll('[data-id="wlp-g"]');
-				pic.style.height = "70vh";
-			</script> -->
-
-
+			<Step> <img data-id="img:q" src="question with color.svg" alt="?" class="w-[40vw] ml-[10vw]"></Step>
 		</mybody>
 	</Layout></Slide>
 
-	<Slide ><Layout>
-		<mybody>
-			<div class="grid" style="grid-template-columns: auto auto auto auto;">
-				<img data-id="wlp-g" src="wlp-g.svg" alt="wlp-g">
-				<img data-id="wlp-g" src="wlp-g-g.svg" alt="wlp-g">
-				<img data-id="wlp-g" src="wlp-g-gg.svg" alt="wlp-g">
-				<img data-id="wlp-g" src="wlp-g-ggr.svg" alt="wlp-g">
-				<img data-id="wlp-g" src="wlp-g-ggrr.svg" alt="wlp-g">
-				<img data-id="wlp-g" src="wlp-g-r.svg" alt="wlp-g">
-				<img data-id="wlp-g" src="wlp-g-rr.svg" alt="wlp-g">
-				<img data-id="wlp-g" src="wlp-g-gr.svg" alt="wlp-g">
-				<img data-id="wlp-g" src="wlp-g-grr.svg" alt="wlp-g">
-				<img data-id="wlp-g" src="wlp-g-ggrr.svg" alt="wlp-g">
-		</div>
-		</mybody>
-	</Layout></Slide>
 
 	<Slide ><Layout>
 		<mybody>
@@ -180,49 +352,121 @@
 			</Stack>
 		</mybody>
 	</Layout></Slide>
+
+
+	<Slide animate><Layout>
+		<titlebar> Possibilities of G </titlebar>
+		<mybody>
+			<div class="grid" style="grid-template-columns: auto auto auto auto; row-gap:5vh;">
+				<img  src="wlp-g.svg" alt="wlp-g">
+				<img  src="wlp-g-g.svg" alt="wlp-g">
+				<img data-id="wlp-gg" src="wlp-g-gg.svg" alt="wlp-g">
+				<img  src="wlp-g-ggr.svg" alt="wlp-g">
+				<img  src="wlp-g-ggrr.svg" alt="wlp-g">
+				<img  src="wlp-g-r.svg" alt="wlp-g">
+				<img  src="wlp-g-rr.svg" alt="wlp-g">
+				<img  src="wlp-g-gr.svg" alt="wlp-g">
+				<img  src="wlp-g-grr.svg" alt="wlp-g">
+				<img  src="wlp-g-ggrr.svg" alt="wlp-g">
+		</div>
+		</mybody>
+	</Layout></Slide>
+
+	<Slide animate><Layout>
+		<titlebar> A Special G </titlebar>
+		<mybody>
+			<img data-id="wlp-gg" src="wlp-g-gg.svg" alt="wlp-g" class="w-[60vw]">
+		</mybody>
+	</Layout></Slide>
+
+	<Slide animate><Layout>
+		<titlebar> A Special G </titlebar>
+		<mybody>
+			<ul class="a ml-[10vw]">
+				<li> if {`\$ (wlp.C.F\\implies G)\ \\wedge\ (sp.C.\\neg G \\implies \\neg F) \$`} then
+					{`\$ wlp_a.C.F \\implies G\$`}
+				</li>
+				<br>
+				<li> if {`\$ (P{\\implies} G) \\implies \\neg(sp.C.P {\\implies} \\neg F) \$`} then 
+					{`\$G {\\implies} wlp_a.C.F \$`}
+				</li>
+				<br>
+			</ul>
+		</mybody>
+	</Layout></Slide>
+
+	<Slide animate><Layout>
+		<titlebar> The General G </titlebar>
+		<mybody>
+			<div class="grid" style="grid-template-columns: auto auto auto auto; row-gap:5vh;">
+				<img  src="wlp-g.svg" alt="wlp-g">
+				<img  src="wlp-g-g.svg" alt="wlp-g">
+				<img data-id="wlp-gg" src="wlp-g-gg.svg" alt="wlp-g">
+				<img  src="wlp-g-ggr.svg" alt="wlp-g">
+				<img  src="wlp-g-ggrr.svg" alt="wlp-g">
+				<img  src="wlp-g-r.svg" alt="wlp-g">
+				<img  src="wlp-g-rr.svg" alt="wlp-g">
+				<img  src="wlp-g-gr.svg" alt="wlp-g">
+				<img  src="wlp-g-grr.svg" alt="wlp-g">
+				<img  src="wlp-g-ggrr.svg" alt="wlp-g">
+		</div>
+		</mybody>
+	</Layout></Slide>
+
 	
 	<Slide ><Layout>
-		<Step fadeIn>
-			Conclusion: without further restrictions, the necessary liberal prcondition {`\$ G \$`} can contain all possible initial states. 
-		</Step>
-		<br>
-		<Step fadeIn>
-			<div class="text-[10vh]"> However: </div> 
-		</Step>
+		<titlebar> The General G </titlebar>
+		<mybody>
+			<div>
+				<Step fadeIn>
+					Conclusion: without further restrictions, {`\$ G \$`} can be anything. 
+				</Step>
+				<br>
+				<Step fadeIn>
+					<div class="text-[10vh]"> However: </div> 
+				</Step>
+			</div>
+		</mybody>
 	</Layout></Slide>
 
 	<Slide ><Layout>
-		<div>
-			<Step fadeIn>
-				Lemma: {`\$ wlp.C.F = \\neg wp.C.\\neg F \$`} 
-			</Step>
-			<Step fadeIn>
-				({`\$ wlp \$`} and {`\$ wp \$`} are each other's conjugate. )
-			</Step>
-		</div> <br>
-		<div class="flex justify-center items-center">
-			<Stack> 
-				<Step> 
-					<img src="wlp-nwp.svg" alt="wlp-nwp" class="h-[50vh] flex items-center justify-center">
-				</Step>
-				<Step fadeIn> 
-					<img src="wlp-nwp-fill.svg" alt="wlp-nwp" class="h-[50vh] flex items-center justify-center">
-				</Step>
-				<Step fadeIn> 
-					<img src="g-fill.svg" alt="wlp-nwp" class="h-[50vh] flex items-center justify-center">
-				</Step>
-				<Step fadeIn> 
-					<img src="ng-bracket.svg" alt="wlp-nwp" class="h-[50vh] flex items-center justify-center">
-				</Step>
-			</Stack>
-		</div>
-		<div>
-			<Step>
-				Conclusion: {`\$ \\neg G \\implies wp.C.\\neg F \$`}. 
-			</Step>
-		</div>
+		<titlebar> The General G </titlebar>
+		<mybody>
+			<div>
+				<div>
+					<Step fadeIn>
+						Lemma: {`\$ wlp.C.F = \\neg wp.C.\\neg F \$`} 
+					</Step>
+					<Step fadeIn>
+						({`\$ wlp \$`} and {`\$ wp \$`} are each other's conjugate. )
+					</Step>
+				</div>
+				<div class="flex justify-center items-center">
+					<Stack> 
+						<Step> 
+							<img src="wlp-nwp.svg" alt="wlp-nwp" class="h-[50vh] flex items-center justify-center">
+						</Step>
+						<Step fadeIn> 
+							<img src="wlp-nwp-fill.svg" alt="wlp-nwp" class="h-[50vh] flex items-center justify-center">
+						</Step>
+						<Step fadeIn> 
+							<img src="g-fill.svg" alt="wlp-nwp" class="h-[50vh] flex items-center justify-center">
+						</Step>
+						<Step fadeIn> 
+							<img src="ng-bracket.svg" alt="wlp-nwp" class="h-[50vh] flex items-center justify-center">
+						</Step>
+					</Stack>
+				</div>
+				<div>
+					<Step>
+						Conclusion: {`\$ \\neg G \\implies wp.C.\\neg F \$`}. 
+					</Step>
+				</div>
+			</div>
+		</mybody>
 	</Layout></Slide>
 	<Slide ><Layout>
+		<titlebar> The General G </titlebar>
 		<div>
 			Conclusion: {`\$ \\neg G \\implies wp.C.\\neg F \$`}. 
 		</div>
@@ -236,15 +480,9 @@
 		</Step>
 	</Layout></Slide>
 
-	<Slide animate><Layout>
-		<img src="wlp-nwp.svg" alt="wlp-nwp" class="h-[50vh] flex items-center justify-center">
-	</Layout></Slide>
-	<Slide animate ><Layout>
-		<img src="wlp-nwp.svg" alt="wlp-nwp" class="h-[20vh] flex items-center justify-center">
-	</Layout></Slide>
-
 	<script>newChapter("Example: Mutual Exclusion")</script>
 	<Slide ><Layout>
+		<titlebar> Example: Mutual Exclusion </titlebar>
 		<div>
 			Modifying Mutual Exclusion Protocol of Peterson: 
 		</div>
@@ -272,6 +510,7 @@
 	</Layout></Slide>
 
 	<Slide ><Layout>
+		<titlebar> Example: Mutual Exclusion </titlebar>
 		<div>
 			Finding wlp: 
 		</div>
@@ -293,6 +532,7 @@
 	</Layout></Slide>
 
 	<Slide ><Layout>
+		<titlebar> Example: Mutual Exclusion </titlebar>
 		<div>
 			Thus by avoiding the satisfaction of critB before leaving non-critical section, thread A can be happy not to be deadlocked with thread B. 
 		</div>
@@ -324,9 +564,10 @@
 	</Layout></Slide>
 
 	<!-- Conclusion -->
-	<script> newChapter("To wrap it up"); </script>
-	<Slide>
-		<Layout>
+	<script> newChapter("Conclusion"); </script>
+	<Slide><Layout>
+		<titlebar> Conclusion </titlebar>
+
 			<Step fadeIn>
 				<div>
 					With the help of {`\$sp,\\  wlp.C.F\\implies G \$`} can be used to identify {`\$ wlp\$`} with angelic non-determinism. 
@@ -347,7 +588,7 @@
 		</Layout>
 	</Slide>
 	<Slide><Layout>
-		<img class="h-[60vh] mx-auto " src="https://media1.tenor.com/m/ktsa9WrPiKgAAAAC/friends-chandler-funny.gif" alt="dance">
+		<titlebar> Reference </titlebar>
 		<br><div> Thank you! </div>
 	</Layout></Slide>
 

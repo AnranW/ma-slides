@@ -317,6 +317,9 @@
 
 
 	<Slide ><Layout>
+		<titlebar style="display:block; padding-top:0.7vh;">
+			{`\$ wlp.C.F\\implies G \$`}
+		</titlebar>
 		<mybody>
 			<Stack>
 				<Step fadeInThenOut> 
